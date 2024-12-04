@@ -1,43 +1,43 @@
 import chalk from 'chalk';
 import { getTableName, is, SQL } from 'drizzle-orm';
 import {
-	AnyPgTable,
-	getMaterializedViewConfig,
-	getTableConfig,
-	getViewConfig,
-	IndexedColumn,
-	PgColumn,
-	PgDialect,
-	PgEnum,
-	PgEnumColumn,
-	PgMaterializedView,
-	PgPolicy,
-	PgRole,
-	PgSchema,
-	PgSequence,
-	PgView,
-	uniqueKeyName,
+  AnyPgTable,
+  getMaterializedViewConfig,
+  getTableConfig,
+  getViewConfig,
+  IndexedColumn,
+  PgColumn,
+  PgDialect,
+  PgEnum,
+  PgEnumColumn,
+  PgMaterializedView,
+  PgPolicy,
+  PgRole,
+  PgSchema,
+  PgSequence,
+  PgView,
+  uniqueKeyName,
 } from 'drizzle-orm/pg-core';
 import { CasingType } from 'src/cli/validations/common';
 import { vectorOps } from 'src/extensions/vector';
 import { withStyle } from '../cli/validations/outputs';
 import type { IntrospectStage, IntrospectStatus } from '../cli/views';
 import type {
-	CheckConstraint,
-	Column,
-	Enum,
-	ForeignKey,
-	Index,
-	IndexColumnType,
-	PgKitInternals,
-	PgSchemaInternal,
-	Policy,
-	PrimaryKey,
-	Role,
-	Sequence,
-	Table,
-	UniqueConstraint,
-	View,
+  CheckConstraint,
+  Column,
+  Enum,
+  ForeignKey,
+  Index,
+  IndexColumnType,
+  PgKitInternals,
+  PgSchemaInternal,
+  Policy,
+  PrimaryKey,
+  Role,
+  Sequence,
+  Table,
+  UniqueConstraint,
+  View,
 } from '../serializer/pgSchema';
 import { type DB, escapeSingleQuotes, isPgArrayType } from '../utils';
 import { getColumnCasing, sqlToStr } from './utils';
@@ -1477,7 +1477,7 @@ WHERE
 							// .replace("timestamp without time zone", "timestamp")
 							.replace('character', 'char');
 
-						columnTypeMapped = trimChar(columnTypeMapped, '"');
+						columnTypeMapped = trimChar(columnTypeMapped, '"').toLowerCase();
 
 						columnToReturn[columnName] = {
 							name: columnName,
@@ -1779,7 +1779,7 @@ WHERE
 							// .replace("timestamp without time zone", "timestamp")
 							.replace('character', 'char');
 
-						columnTypeMapped = trimChar(columnTypeMapped, '"');
+						columnTypeMapped = trimChar(columnTypeMapped, '"').toLowerCase();
 
 						columnToReturn[columnName] = {
 							name: columnName,
